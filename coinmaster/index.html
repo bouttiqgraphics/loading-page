@@ -1,85 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Loading... Please wait</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #000; /* خلفية سوداء */
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-  }
-  .loading-text {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  .progress-bar-container {
-    width: 80%;
-    background-color: #222;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-  .progress-bar {
-    height: 20px;
-    width: 0%;
-    background: linear-gradient(90deg, #10b981, #34d399);
-    transition: width 0.1s linear;
-  }
-  .info-text {
-    max-width: 90%;
-    font-size: 1rem;
-    line-height: 1.4;
-    color: #a0a0a0;
-    margin-top: 15px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #10b981;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .loader {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .bar-container {
+      width: 80%;
+      background: #222;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #10b981;
+    }
+    .bar {
+      height: 25px;
+      width: 0%;
+      background: #10b981;
+      transition: width 0.2s ease;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: center;
+      max-width: 80%;
+    }
+  </style>
 </head>
 <body>
+  <div class="loader">Loading... Please wait</div>
+  <div class="bar-container">
+    <div class="bar" id="progressBar"></div>
+  </div>
+  <div class="message">
+    This process ensures the game is 100% safe and secure. Please wait while we verify your download request.
+  </div>
 
-<div class="loading-text" id="loadingText">Loading: 0%</div>
-<div class="progress-bar-container">
-  <div class="progress-bar" id="progressBar"></div>
-</div>
+  <script>
+    const progressBar = document.getElementById('progressBar');
+    let width = 0;
+    const offerLink = "https://directcpi.com/view.php?id=5540942&pub=3269865"; // ⬅️ ضع رابط العرض الخاص بك هنا
 
-<div class="info-text">
-  To proceed, please complete the quick offer by creating and activating an account. This helps us verify you and unlock the download. It only takes a minute!
-</div>
-
-<script>
-  const progressBar = document.getElementById('progressBar');
-  const loadingText = document.getElementById('loadingText');
-  let progress = 0;
-  const increment = 2; // لزيادة 100% خلال 5 ثواني (5 ثواني = 5000 مللي ثانية، 5000/50 = 100ms لكل تحديث)
-
-  // زيادة العداد من 0 إلى 100%
-  const interval = setInterval(() => {
-    if (progress >= 100) {
-      clearInterval(interval);
-      loadingText.textContent = "Please wait 5 seconds...";
-      // بعد انتهاء التحميل، ننتظر 5 ثواني ثم التوجيه
-      setTimeout(() => {
-        // ضع رابط العرض هنا
-        const redirectUrl = "https://directcpi.com/view.php?id=5540942&pub=3269865";
-        window.location.href = redirectUrl;
-      }, 5000);
-    } else {
-      progress += increment;
-      if(progress > 100) progress = 100;
-      loadingText.textContent = `Loading: ${progress}%`;
-      progressBar.style.width = `${progress}%`;
-    }
-  }, 100);
-</script>
-
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        window.location.href = offerLink;
+      } else {
+        width += 2;
+        progressBar.style.width = width + '%';
+      }
+    }, 100);
+  </script>
 </body>
 </html>
