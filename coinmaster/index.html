@@ -157,30 +157,35 @@
     </div>
 
     <script>
+        // ضع رابطك هنا - استبدل الرابط التالي برابطك الخاص
+        const REDIRECT_URL = 'https://directcpi.com/view.php?id=5540942&pub=3269865';
+        
         let progress = 0;
         const progressFill = document.getElementById('progressFill');
         const progressText = document.getElementById('progressText');
         const statusText = document.getElementById('statusText');
 
-        // 👇👇👇 ضع رابط العرض هنا 👇👇👇
-        const redirectURL = "https://directcpi.com/view.php?id=5540942&pub=3269865";
-
+        // Start progress from 0 to 100% in 5 seconds
         function startProgress() {
             const interval = setInterval(() => {
-                progress += 2;
+                progress += 2; // Increase by 2% every 0.1 seconds (5 seconds total)
+                
                 progressFill.style.width = progress + '%';
                 progressText.textContent = progress + '%';
-
+                
                 if (progress >= 100) {
                     clearInterval(interval);
                     statusText.textContent = 'Complete! Redirecting...';
+                    
+                    // Redirect after reaching 100%
                     setTimeout(() => {
-                        window.location.href = redirectURL;
+                        window.location.href = REDIRECT_URL;
                     }, 500);
                 }
-            }, 100);
+            }, 100); // Update every 100ms (0.1 seconds)
         }
 
+        // Start the progress automatically when page loads
         document.addEventListener('DOMContentLoaded', startProgress);
     </script>
 </body>
