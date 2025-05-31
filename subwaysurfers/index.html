@@ -1,90 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: white;
-            padding: 20px;
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .note {
-            background: rgba(255, 193, 7, 0.2);
-            border: 2px solid #ffc107;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 40px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .note-title {
-            font-weight: bold;
-            color: #ffc107;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .countdown-number {
-            font-size: 120px;
-            font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .countdown {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #ff3333;
+    }
+    .note {
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="note">
-            <div class="note-title">NOTE:</div>
-            Before starting the download, you have a simple task. You will be directed to the TikTok application. Download it and use it for a minute and a half.
-        </div>
-        
-        <div class="countdown-number" id="countdown">5</div>
-    </div>
+  <div class="container">
+    <h1>Your download is almost ready...</h1>
+    <div class="countdown" id="timer">5</div>
+    <p class="note">NOTE: Before starting the download, you have a simple task.<br>
+    You will be directed to the TikTok application. Download it and use it for a minute and a half.</p>
+  </div>
 
-    <script>
-        // ضع الرابط المطلوب التوجيه إليه هنا
-        const REDIRECT_URL = 'https://smrturl.co/a/sc181dc47dc/86?s1=';
-        
-        let countdown = 5;
-        const countdownElement = document.getElementById('countdown');
-        
-        const interval = setInterval(() => {
-            countdown--;
-            countdownElement.textContent = countdown;
-            
-            if (countdown <= 0) {
-                clearInterval(interval);
-                window.location.href = REDIRECT_URL;
-            }
-        }, 1000);
-    </script>
+  <script>
+    let seconds = 5;
+    const timerElement = document.getElementById("timer");
+
+    const countdown = setInterval(() => {
+      seconds--;
+      timerElement.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(countdown);
+        // Replace this URL with your actual redirect link
+        window.location.href = "https://smrturl.co/a/sc181dc47dc/86?s1=";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
