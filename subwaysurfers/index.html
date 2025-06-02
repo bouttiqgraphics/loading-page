@@ -1,60 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirecting...</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .countdown {
-      font-size: 48px;
-      font-weight: bold;
-      margin: 20px 0;
-      color: #ff3333;
-    }
-    .note {
-      font-size: 16px;
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Game Download Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .security-badge i {
+            margin-right: 8px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .countdown-container {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        .countdown-text {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .countdown {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4f46e5;
+            margin: 15px 0;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4f46e5, #06b6d4);
+            width: 0%;
+            transition: width 0.1s ease-out;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .security-features {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .security-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #10b981;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .security-item i {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .loading-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4f46e5;
+            margin: 0 2px;
+            animation: loading 1.4s infinite ease-in-out;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes loading {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .countdown {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Your download is almost ready...</h1>
-    <div class="countdown" id="timer">5</div>
-    <p class="note">NOTE: Before starting the download, you have a simple task.<br>
-    You will be directed to the TikTok application. Download it and use it for a minute and a half.</p>
-  </div>
+    <div class="container">
+        <div class="security-badge">
+            <i class="fas fa-shield-alt"></i>
+            SSL Secured Connection
+        </div>
 
-  <script>
-    let seconds = 5;
-    const timerElement = document.getElementById("timer");
+        <div class="logo pulse">
+            <i class="fas fa-gamepad"></i>
+        </div>
 
-    const countdown = setInterval(() => {
-      seconds--;
-      timerElement.textContent = seconds;
+        <h1>Almost Ready!</h1>
+        <p class="subtitle">This is the final step! Create and activate your account to verify — once done, your game download will be ready</p>
 
-      if (seconds <= 0) {
-        clearInterval(countdown);
-        // Replace this URL with your actual redirect link
-        window.location.href = "https://smrturl.co/a/sc181dc47dc/86?s1=";
-      }
-    }, 1000);
-  </script>
+        <div class="security-features">
+            <div class="security-item">
+                <i class="fas fa-lock"></i>
+                <span>256-bit SSL</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-user-shield"></i>
+                <span>Privacy Protected</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-certificate"></i>
+                <span>Verified Secure</span>
+            </div>
+        </div>
+
+        <div class="countdown-container">
+            <div class="countdown-text">
+                Redirecting in <span id="countdown" class="countdown">5</span> seconds
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+    </div>
+
+    <script>
+        // ضع الرابط الذي تريد التوجه إليه هنا
+        const REDIRECT_URL = "https://mobtrk.link/view.php?id=5540942&pub=3269865"; // غير هذا الرابط إلى الرابط المطلوب
+
+        let countdown = 5;
+        let progress = 0;
+        
+        const countdownElement = document.getElementById('countdown');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+
+        function updateProgress() {
+            progress += 2; // زيادة 2% كل 0.1 ثانية لتصل إلى 100% في 5 ثواني
+            if (progress > 100) progress = 100;
+            
+            progressBar.style.width = progress + '%';
+            progressText.textContent = progress + '%';
+        }
+
+        function updateCountdown() {
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                // التوجه إلى الرابط المحدد
+                window.location.href = REDIRECT_URL;
+                return;
+            }
+            
+            countdown--;
+        }
+
+        // تحديث العداد كل ثانية
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+        // تحديث شريط التقدم كل 0.1 ثانية
+        const progressInterval = setInterval(updateProgress, 100);
+
+        // تنظيف المؤقتات عند انتهاء العد التنازلي
+        setTimeout(() => {
+            clearInterval(countdownInterval);
+            clearInterval(progressInterval);
+        }, 5000);
+
+        // إضافة تأثيرات بصرية إضافية
+        setTimeout(() => {
+            document.querySelector('.container').style.transform = 'scale(0.98)';
+            document.querySelector('.container').style.transition = 'transform 0.3s ease';
+        }, 4000);
+    </script>
 </body>
 </html>
