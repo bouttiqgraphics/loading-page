@@ -1,197 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Download Coin Master MOD</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #0d1117;
-      font-family: 'Segoe UI', sans-serif;
-      color: #ffffff;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Master MOD - Unlimited Coins & Spins</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #161b22;
-      padding: 15px 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
 
-    .header img {
-      height: 35px;
-      margin-right: 10px;
-    }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            min-height: 100vh;
+        }
 
-    .header h1 {
-      font-size: 20px;
-      color: #3b82f6;
-      margin: 0;
-      font-weight: 600;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
 
-    .container {
-      max-width: 420px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 20px;
-    }
+        .game-logo {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+            border: 3px dashed #ddd;
+        }
 
-    .card {
-      background-color: #161b22;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
+        .game-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
 
-    .card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+        .game-subtitle {
+            font-size: 16px;
+            color: #fff;
+            opacity: 0.9;
+        }
 
-    .card-content {
-      padding: 16px;
-    }
+        .game-images {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
 
-    .title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
+        .game-icon {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            border: 2px dashed #ddd;
+            flex-shrink: 0;
+        }
 
-    .rating {
-      color: #facc15;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
+        .game-screenshot {
+            flex: 1;
+            height: 120px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            border: 2px dashed #ddd;
+        }
 
-    .info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      margin-bottom: 16px;
-      color: #c9d1d9;
-    }
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
 
-    .tag {
-      background-color: #30363d;
-      padding: 5px 10px;
-      border-radius: 8px;
-    }
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
 
-    .description {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #c9d1d9;
-      margin-bottom: 16px;
-    }
+        .stars {
+            color: #ffd700;
+            font-size: 24px;
+        }
 
-    .features {
-      margin-bottom: 16px;
-    }
+        .rating-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    .features li {
-      font-size: 14px;
-      margin-bottom: 6px;
-      color: #d1d5db;
-    }
+        .downloads {
+            font-size: 16px;
+            opacity: 0.9;
+        }
 
-    .download-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: linear-gradient(to right, #0ea5e9, #3b82f6);
-      color: #fff;
-      padding: 12px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background 0.3s;
-      margin-top: 10px;
-      cursor: pointer;
-    }
+        .download-btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
 
-    .download-btn:hover {
-      background: linear-gradient(to right, #0284c7, #2563eb);
-    }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
 
-    .screenshot {
-      margin-top: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
+        .download-btn:active {
+            transform: translateY(0);
+        }
 
-    .screenshot img {
-      width: 100%;
-      display: block;
-    }
-  </style>
+        .description {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .description h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .features {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .features h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .feature-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .mod-badge {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .warning-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <div class="header">
-    <!-- لو عندك لوجو حط هنا -->
-    <h1>Games4u</h1>
-  </div>
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="card">
-      <img src="https://i.postimg.cc/gkxQ7JhW/coin-master-mod.jpg" alt="Coin Master MOD" />
-      <div class="card-content">
-        <div class="title">Coin Master MOD</div>
-        <div class="rating">⭐ 4.9 (8.1k reviews)</div>
-        <div class="info">
-          <span class="tag">Adventure</span>
-          <span>150 MB</span>
+    <div class="container">
+        <div class="header">
+            <div class="game-logo">
+                [Main Game Logo Here]
+            </div>
+            <div class="mod-badge">MOD VERSION</div>
+            <h1 class="game-title">Coin Master MOD</h1>
+            <p class="game-subtitle">Unlimited Coins & Spins - Free Download</p>
         </div>
-        <div class="description">
-          🪙 Get unlimited coins, spins, and resources with this fully unlocked Coin Master MOD version! Enjoy ad-free gameplay and become the ultimate Coin Master.
+
+        <div class="game-images">
+            <div class="game-icon">
+                [Game Icon]
+            </div>
+            <div class="game-screenshot">
+                [Game Screenshot]
+            </div>
         </div>
-        <ul class="features">
-          <li>💰 Unlimited Coins & Spins</li>
-          <li>🛡️ All Villages Unlocked</li>
-          <li>⚡ Fast Progression Mode</li>
-          <li>🚫 No Ads – Pure Gameplay</li>
-          <li>🎨 Enhanced Graphics</li>
-        </ul>
-        <a href="https://your-final-link.com"
-           class="download-btn"
-           data-interact-trigger
-           data-tool-id="57240"
-           target="_blank" rel="noopener noreferrer">
-           Download Game
+
+        <div class="stats-section">
+            <div class="rating">
+                <div class="stars">★★★★★</div>
+                <div class="rating-text">4.9</div>
+            </div>
+            <div class="downloads">2,700,000+ Downloads</div>
+        </div>
+
+        <!-- 🔗 ضع رابط التحميل الخاص بك هنا بدلاً من "#download" -->
+        <a href="YOUR_DOWNLOAD_LINK_HERE" class="download-btn pulse" data-interact-trigger data-tool-id="57240">
+            🎮 DOWNLOAD MOD NOW
         </a>
-      </div>
+
+        <div class="description">
+            <h3>📋 Description</h3>
+            <p>Experience Coin Master like never before with our exclusive MOD version! Get unlimited coins and spins to build your village faster and attack your friends without limits. This modified version includes all premium features unlocked, giving you the ultimate gaming experience.</p>
+        </div>
+
+        <div class="features">
+            <h3>✨ MOD Features</h3>
+            
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <div>
+                    <strong>Unlimited Coins</strong><br>
+                    <small>Never run out of coins to build and upgrade</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎰</div>
+                <div>
+                    <strong>Unlimited Spins</strong><br>
+                    <small>Spin the slot machine as much as you want</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🏰</div>
+                <div>
+                    <strong>All Villages Unlocked</strong><br>
+                    <small>Access to all village themes and decorations</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div>
+                    <strong>MOD Menu</strong><br>
+                    <small>Easy-to-use mod menu with all features</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🚫</div>
+                <div>
+                    <strong>No Ads</strong><br>
+                    <small>Enjoy the game without interruptions</small>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📱</div>
+                <div>
+                    <strong>Anti-Ban Protection</strong><br>
+                    <small>Safe to use with advanced protection</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-note">
+            <strong>⚠️ Installation Note:</strong> This is a modified version of Coin Master. Make sure to backup your original game data before installing. Download only from trusted sources.
+        </div>
+
+        <!-- 🔗 ضع رابط التحميل الخاص بك هنا بدلاً من "#download" -->
+        <a href="https://getmodsapk.com/coin-master-free-mod-apk/download" class="download-btn" data-interact-trigger data-tool-id="57240">
+            ⬇️ GET MOD VERSION FREE
+        </a>
     </div>
 
-    <div class="screenshot">
-      <img src="https://i.postimg.cc/fW9bPBXY/coin-master-screenshot.png" alt="Gameplay Screenshot" />
-    </div>
-
-    <a href="https://your-final-link.com"
-       class="download-btn"
-       data-interact-trigger
-       data-tool-id="57240"
-       target="_blank" rel="noopener noreferrer">
-       Download Now
-    </a>
-  </div>
-
-  <!-- CPAlead Overlay Script -->
-  <script>
-    window.CPAlead_PublisherUserId = 3269865;
-  </script>
-  <script src="https://cdnflair.com/js/interact-form.js" async defer></script>
-
+    <script>window.CPAlead_PublisherUserId = 3269865;</script>
+<script src="https://cdnflair.com/js/interact-form.js" async defer></script>
+    
 </body>
 </html>
